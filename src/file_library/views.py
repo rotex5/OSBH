@@ -11,7 +11,7 @@ def file_list(request):
     uploader = None
     try:
         uploader = FileUploader.objects.get(user = request.user)
-    except ObjectDoesNotExist:
+    except Exception:
         pass
     context = {
         'files': files,
