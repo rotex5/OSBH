@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 # Create your views here.
 from .forms import CommentForm
-from .models import Blog
+from .models import Blog, BlogAuthor
 
 
 def list_blog(request):
@@ -40,3 +40,12 @@ def create_comment(request, id):
         'form': form
     }
     return render(request, 'blog/create-comment.html', context)
+
+
+def author_detail(request, id):
+    """View showing the details of an author"""
+    author = BlogAuthor.objects.get(id=id)
+    context = {
+        'author': author
+    }
+    return render(request, 'blog/author-detail.html', context)

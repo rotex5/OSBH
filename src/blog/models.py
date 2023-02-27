@@ -1,6 +1,8 @@
 from datetime import date
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.urls import reverse
 
 
@@ -72,3 +74,13 @@ class BlogComment(models.Model):
         else:
             titlestring = self.description
         return titlestring
+
+
+@receiver(post_save, sender = User)
+def user_is_created(sender, instance, created, **kwargs):
+    """ When any user instance created, FileUploader object
+    instance is created and automatically linked by User """
+    if created:
+        BlogAuthor.objects.create(user=instance)
+    else:
+        instance.blogauthor.save()

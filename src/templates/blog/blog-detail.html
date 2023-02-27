@@ -4,8 +4,8 @@
 
 <h1>{{ blog.name }}</h1>
 <p><strong>Post date</strong> {{ blog.post_date }}</p>
-{# <p><strong>Author:</strong> <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a></p> #}
-<p><strong>Author:</strong> <a href="#">{{ blog.author }}</a></p>
+<p><strong>Author:</strong> <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a></p>
+{# <p><strong>Author:</strong> <a href="#">{{ blog.author }}</a></p> #}
 <p><strong>Description:</strong></p>
 <p style="white-space:pre-wrap;">{{ blog.description }}</p>
 
