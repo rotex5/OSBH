@@ -1,0 +1,5 @@
+db.sqlite3
+.venv
+migrations
+media_root
+__pycache__

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Files</h2>
+    <p>
+      <a href="{% url 'file-upload' %}" class="btn btn-primary">Upload file</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Preview</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for file in files %}
+        <tr>
+          <td>
+            {% if file.cover %}
+              <img src="{{ file.cover.url }}" alt="{{ file.title }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No cover</span>
+            {% endif %}
+          </td>
+          <td>{{ file.title }}</td>
+          <td>{{ file.author }}</td>
+          <td>
+            <a href="{{ file.pdf.url }}" class="btn btn-warning btn-sm" target="_blank">
+              Preview File
+            </a>
+          </td>
+          {%if uploader.has_uploaded %}
+          <td>
+            <a href="{{ file.pdf.url }}" class="btn btn-success btn-sm" target="_blank">
+              Download File
+            </a>
+          </td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
