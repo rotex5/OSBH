@@ -28,7 +28,7 @@ def file_upload(request):
         if form.is_valid():
             form.instance.uploader = user
             form.save()
-            if not user.has_uploaded:
+            if user.has_uploaded is False:
                 user.has_uploaded = True
                 user.save()
             return redirect('file-list')
