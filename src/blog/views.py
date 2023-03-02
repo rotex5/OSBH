@@ -1,7 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy
 # Create your views here.
-from .forms import CommentForm
+from .forms import BlogForm, CommentForm
 from .models import Blog, BlogAuthor
 
 
@@ -11,20 +11,30 @@ def list_blog(request):
     context = {
         'blog_list': blog_list
     }
-    return render(request, 'blog/blog_list.html', context)
+    return render(request, 'blog/blog-list.html', context)
+
+
+@login_required
+def blog_post(request):
+    """posting a blog"""
+    if request.method == "POST":
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            author = get_object_or_404(BlogAuthor, user=request.user)
+            form.instance.author =  author    
+            form.save()
+            id= form.instance.id
+        return redirect('blog-detail', id=id)
+    else:
+        form = BlogForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'blog/blog-post.html', context)
 
 
 def blog_detail(request, id):
-    """Blog detail view"""
-    blog = Blog.objects.get(id=id)
-    context = {
-        'blog': blog
-    }
-    return render(request, 'blog/blog-detail.html', context)
-
-
-def create_comment(request, id):
-    """Comment view"""
+    # Comment view
     blog = get_object_or_404(Blog, id=id)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -39,7 +49,25 @@ def create_comment(request, id):
         'blog': blog,
         'form': form
     }
-    return render(request, 'blog/create-comment.html', context)
+    return render(request, 'blog/blog-detail.html', context)
+
+
+@login_required
+def blog_update(request, id):
+    """update a blog"""
+    blog = get_object_or_404(Blog, id=id)
+    form = BlogForm(request.POST or None, instance=blog)
+    if form.is_valid():
+        author = get_object_or_404(BlogAuthor, user=request.user)
+        form.instance.author =  author    
+        form.save()
+        return redirect('blog-detail', id=id)
+    context = {
+        'form': form,
+        'blog': blog
+    }
+    return render(request, 'blog/blog-update.html', context)
+
 
 
 def author_detail(request, id):

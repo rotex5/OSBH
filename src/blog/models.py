@@ -11,7 +11,7 @@ class Blog(models.Model):
     Model representing a blog post.
     """
     title = models.CharField(max_length=200)
-    description = models.TextField(max_length=2000, help_text="Enter you blog text here.")
+    description = models.TextField(max_length=2000)
     author = models.ForeignKey('BlogAuthor', on_delete=models.SET_NULL, null=True)
     post_date = models.DateField(default=date.today)
 

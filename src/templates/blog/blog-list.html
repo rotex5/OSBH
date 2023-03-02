@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% block content_header %}
+      {% if user.is_authenticated %}
+      <p>
+        <a href="{% url 'blog-post' %}" class="btn btn-primary">Create a new blog</a>
+      </p>  
+      {% endif%}
+    {% endblock %}
     <h1>All blogs</h1>
 
     {% if blog_list %}
