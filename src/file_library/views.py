@@ -1,5 +1,5 @@
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.decorators import login_required
+#from django.core.exceptions import ObjectDoesNotExist
+#from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 # Create your views here.
 from .forms import FileForm
@@ -20,7 +20,7 @@ def file_list(request):
     return render(request, 'file_library/file_list.html', context)
  
 
-@login_required
+# @login_required
 def file_upload(request):
     user = FileUploader.objects.get(user = request.user)
     if request.method == 'POST':
