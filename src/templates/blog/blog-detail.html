@@ -2,7 +2,9 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <p><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update blog</a></p>
+{% endif %}
 <h1>{{ blog.title }}</h1>
 <p><strong>Post date</strong> {{ blog.post_date }}</p>
 <p><strong>Author:</strong> <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a></p>

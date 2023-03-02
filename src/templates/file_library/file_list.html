@@ -38,18 +38,26 @@
               Preview File
             </a>
           </td>
-          {%if uploader.has_uploaded %}
-          <td>
-            <a href="{{ file.pdf.url }}" class="btn btn-success btn-sm" target="_blank">
-              Download File
-            </a>
-          </td>
+          {% if user.is_authenticated %}
+            {%if uploader.has_uploaded %}
+            <td>
+              <a href="{{ file.pdf.url }}" class="btn btn-success btn-sm" target="_blank">
+                Download File
+              </a>
+            </td>
+            {% else %}
+            <td>
+              <a href="{% url 'file-upload' %}" class="btn btn-info btn-sm">
+                Upload a book/article to unlock download button
+              </a>
+            </td>
+            {% endif %}
           {% else %}
-          <td>
-            <a href="#" class="btn btn-info btn-sm">
-              Sign Up & Upload a File
-            </a>
-          </td>
+            <td>
+              <a href="{% url 'login'%}?next={{request.path}}" class="btn btn-secondary btn-sm">
+                Login
+              </a>
+            </td>
           {% endif %}
         </tr>
       {% endfor %}
