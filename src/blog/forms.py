@@ -10,6 +10,9 @@ class BlogForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     """Respresenting comment form"""
+    description = forms.CharField(required=True, widget=forms.Textarea(attrs={
+            'rows': 4
+        }))
     class Meta:
         model  = BlogComment
         fields = ('description',)

@@ -1,12 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-  <h3>Post a Blog</h3>
-  <form action="" method="post">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
-  </form>
+  <div class="container">
+    <div class='col-md-6 offset-md-3'>
+      <h3>Post a Blog</h3>
+      <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
 {% endblock %}

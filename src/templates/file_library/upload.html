@@ -3,10 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class='col-md-6 offset-md-3'>
   <h2>Upload file</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Upload file</button>
   </form>
+</div>
 {% endblock %}
