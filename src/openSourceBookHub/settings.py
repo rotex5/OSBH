@@ -9,13 +9,13 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-import environ
+# import environ
 import os
 from pathlib import Path
 
 # Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-cgb)24l$fn7-d+2b3kz!!xs#9y-a__95jpt8@n=e!8^ek12n_j
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = ['*']
+#CSRF_TRUSTED_ORIGINS = ['https://ea6f-197-210-28-38.ngrok.io']
 
 # Application definition
 
@@ -172,6 +173,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 # Provider specific settings
+"""
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         # For each OAuth based provider, either add a ``SocialApp``
@@ -200,3 +202,4 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+"""
