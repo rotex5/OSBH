@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <center>
+    {% if searched %}
+      {% if file_results %}
+        <h3>Files results:</h3> 
+        {% for result in file_results %}
+          <div class="container">
+            <h4> <a href="{{result.get_absolute_url}}">{{result.title}}</a></h4>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h3>No related results in File search.</h3>
+      {% endif %}
+
+        <br>
+
+      {% if blog_results %}
+        <h3>Blogs results:</h3>
+        {% for result in blog_results %}
+          <div class="container">
+            <h4> <a href="{{result.get_absolute_url}}">{{result.title}}</a></h4>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h3>No related results in Blog search.</h3>
+      {% endif%}
+    {%else%}
+      <h3>No results found.</h3>
+    {% endif%}
+  </center>
+{% endblock %}

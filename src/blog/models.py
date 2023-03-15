@@ -1,4 +1,3 @@
-from datetime import date
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -11,12 +10,14 @@ class Blog(models.Model):
     Model representing a blog post.
     """
     title = models.CharField(max_length=200)
-    description = models.TextField(max_length=2000)
+    content = models.TextField(max_length=2000)
+    thumbnail = models.ImageField(upload_to='blogs/thumbnails/', null=True, blank=True)
     author = models.ForeignKey('BlogAuthor', on_delete=models.SET_NULL, null=True)
-    post_date = models.DateField(default=date.today)
+    publish_date = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["-post_date"]
+        ordering = ["-publish_date"]
 
     def get_absolute_url(self):
         """
@@ -27,6 +28,25 @@ class Blog(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.title
+   
+    def get_like_url(self):
+        """
+        Returns the url to access a particular blog instance.
+        """
+        return reverse('blog-like', args=[str(self.id)])
+
+
+    @property
+    def get_comment_count(self):
+        return self.blogcomment_set.all().count()
+
+    @property
+    def get_view_count(self):
+        return self.blogview_set.all().count()
+
+    @property
+    def get_like_count(self):
+        return self.bloglike_set.all().count()
 
 
 class BlogAuthor(models.Model):
@@ -57,23 +77,45 @@ class BlogComment(models.Model):
     Model representing a comment against a blog post.
     """
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    description = models.TextField(max_length=1000, help_text="Enter comment about blog here.")
+    content = models.TextField(max_length=1000, help_text="Enter comment about blog here.")
     commenter = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    post_date = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["post_date"]
+        ordering = ["timestamp"]
 
     def __str__(self):
         """
         String for representing the Model object.
         """
         len_title = 70
-        if len(self.description) > len_title:
-            titlestring = self.description[:len_title] + '...'
+        if len(self.content) > len_title:
+            titlestring = self.content[:len_title] + '...'
         else:
-            titlestring = self.description
+            titlestring = self.content
         return titlestring
+
+class BlogView(models.Model):
+    """
+    No of view associated with a blog
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class BlogLike(models.Model):
+    """
+    Like assocated with a blog
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender = User)

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Files</h2>
+    {% if user.is_authenticated %}
+    <p>
+      <a href="{% url 'file-upload' %}" class="btn btn-primary">Upload file</a>
+    </p>
+    {% endif %}
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Preview</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+            {% if file.cover %}
+              <img src="{{ file.cover.url }}" alt="{{ file.title }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No cover</span>
+            {% endif %}
+          </td>
+          <td>{{ file.title }}</td>
+          <td>{{ file.author }}</td>
+          <td>
+            <a href="{{ file.pdf.url }}" class="btn btn-warning btn-sm" target="_blank">
+              Preview File
+            </a>
+          </td>
+          {% if user.is_authenticated %}
+            {%if uploader.has_uploaded %}
+            <td>
+              <a href="{{ file.pdf.url }}" class="btn btn-success btn-sm" target="_blank">
+                Download File
+              </a>
+            </td>
+            {% else %}
+            <td>
+              <a href="{% url 'file-upload' %}" class="btn btn-info btn-sm">
+                Upload a book/article to unlock download button
+              </a>
+            </td>
+            {% endif %}
+          {% else %}
+            <td>
+              <a href="{% url 'account_login'%}?next={{request.path}}" class="btn btn-secondary btn-sm">
+                Login
+              </a>
+            </td>
+          {% endif %}
+        </tr>
+    </tbody>
+  </table>
+{% endblock %}

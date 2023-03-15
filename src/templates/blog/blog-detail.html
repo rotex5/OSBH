@@ -3,38 +3,66 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-<p><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update blog</a></p>
+{% if user.is_authenticated and request.user.username == blog.author.user.username %}
+        <p><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update</a></p>
+        {% if user.is_staff or request.user.username == blog.author.user.username %}
+        <p><a href="{% url 'blog-delete' blog.id %}" class="btn btn-danger">Delete</a></p>
+        {% endif %}
 {% endif %}
-<h1>{{ blog.title }}</h1>
-<p><strong>Post date</strong> {{ blog.post_date }}</p>
-<p><strong>Author:</strong> <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a></p>
-<p><strong>Description:</strong></p>
-<p style="white-space:pre-wrap;">{{ blog.description }}</p>
 
-<div style="margin-left:20px;margin-top:20px">
-<h4>Comments</h4>
+  <div class='row'>
+    <div class='col-15 offset-0'>
+    <div class='card' style='padding: 10px;'>
+        <h1>{{ blog.title|title }}</h1>
+        {% if blog.thumbnail %}
+        <img src="{{ blog.thumbnail.url }}" class="card-img-top" alt="..." width="107" height="700">
+        {% endif %}
+        <hr />
+        <div>
+            <span><i class="fas fa-comments ml-2"></i> {{ blog.get_comment_count }}</span>
+            <span><i class="fas fa-eye ml-2"></i> {{ blog.get_view_count }}</span>
+            <span><i class="fas fa-thumbs-up ml-2"></i> {{ blog.get_like_count }}</span>
+            <span class='float-end'>Posted {{ blog.publish_date|timesince }} ago</span>
+        </div>
+        <hr />
+        <div>
+        <p>{{ blog.content }}</p>
+        </div>
+        <div>
+            {% if request.user.is_authenticated %}
+            <h4>Enjoy this post? Give it a like</h4>
+            <a class="text-muted" href="{{ blog.get_like_url }}">
+            .<i class="fas fa-thumbs-up fa-lg"></i> 
+            {{ blog.get_like_count }}
+            </a>
+            <hr />
+                <h4>Leave a comment below</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class='btn btn-primary' type='submit'>Comment</button>
+                </form>
+                <hr />
+                <h5>Comments</h5>
+                <br />
+                {% for comment in blog.blogcomment_set.all %}
+                    <div>
+                        <p>{{comment.commenter}}
+                        <br />
+                        {{ comment.content }}
+                        <br />
+                        <small>{{ comment.timestamp|timesince }} ago</small>
+                        </p>
+                    </div>
+                    <hr />
+                {% endfor %}
+            {% else %}
+            <a href="{% url 'account_login' %}?next={{request.path}}" class="btn btn-primary btn-block">Login to comment</a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+  </div>
 
-{% for comment in blog.blogcomment_set.all %}
-<hr>
-<p>{{comment.commenter}} ({{comment.post_date}}) - {{comment.description}}</p>
-{% endfor %}
-<hr>
 
-{% if user.is_authenticated %}
-{# <a href="{% url 'comment-create' blog.id %}">Add a new comment</a></p>#}
-  <h4>Leave a comment below</h4>
-  <form action="" method="post">
-    {% csrf_token %}
-    <table>
-    {{ form|crispy}}  
-    </table>
-   <button type="submit" class="btn btn-primary">Comment</button> 
-  </form>
-{% else %}
-  <p><a href="{% url 'account_login'%}?next={{request.path}}">Login</a> to add a new comment</p>
-{% endif %} 
-
-
-</div>
 {% endblock %}

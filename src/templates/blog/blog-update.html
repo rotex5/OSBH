@@ -5,10 +5,10 @@
   <div class="container">
     <div class='col-md-6 offset-md-3'>
       <h3>Post a Blog</h3>
-      <form action="" method="post">
+      <form method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" value="Submit">
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>

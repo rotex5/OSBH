@@ -28,19 +28,24 @@
           </li>
           {% if request.user.is_authenticated %}
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            <a class="nav-link" href="{% url 'account_logout' %}?next={{request.path}}">Logout</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link"> Welcome  {{ user.get_username }}</a>
           </li>
           {% else %}
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            <a class="nav-link" href="{% url 'account_login' %}?next={{request.path}}">Login</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
+            <a class="nav-link" href="{% url 'account_signup' %}?next={{request.path}}">Signup</a>
           </li>
           {% endif %}
+          <form class="d-flex" role="search" method="POST" action="{% url 'search-result' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" name="searched" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> 
         </ul>
       </div>
     </nav>
