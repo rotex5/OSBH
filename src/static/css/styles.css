@@ -1,5 +1,11 @@
-.sidebar-nav {
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
+body::before {
+  display: block;
+  content: '';
+  height: 60px;
+}
+
+@media(min-width: 768px) {
+  .file-upload {
+      width: 50%;
+  }
 }

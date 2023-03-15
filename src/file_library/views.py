@@ -1,10 +1,14 @@
-#from django.core.exceptions import ObjectDoesNotExist
-#from django.contrib.auth.decorators import login_required
+# from django.core.exceptions import ObjectDoesNotExist
+# from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 # Create your views here.
 from .forms import FileForm
 from .models import File, FileUploader
-from blog.models import  Blog
+from blog.models import Blog
+
+
+def landing_page(request):
+    return render(request, 'file_library/landing.html')
 
 
 def file_list(request):
@@ -14,11 +18,12 @@ def file_list(request):
     }
     return render(request, 'file_library/file_list.html', context)
 
+
 def file_detail(request, id):
     file = get_object_or_404(File, id=id)
     uploader = None
     try:
-        uploader = FileUploader.objects.get(user = request.user)
+        uploader = FileUploader.objects.get(user=request.user)
     except Exception:
         pass
     context = {
@@ -26,11 +31,11 @@ def file_detail(request, id):
         'uploader': uploader
     }
     return render(request, 'file_library/file-detail.html', context)
- 
+
 
 # @login_required
 def file_upload(request):
-    user = FileUploader.objects.get(user = request.user)
+    user = FileUploader.objects.get(user=request.user)
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -48,6 +53,7 @@ def file_upload(request):
     }
     return render(request, 'file_library/upload.html', context)
 
+
 def search_result(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
@@ -57,9 +63,8 @@ def search_result(request):
             'searched': searched,
             'file_results': file_results,
             'blog_results': blog_results
-        } 
+        }
         return render(request, 'search-result.html', context)
     else:
         context = {}
         return render(request, 'search-result.html', context)
-        

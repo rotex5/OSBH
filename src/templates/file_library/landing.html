@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  {# ------ Showcase who we are --------- #}
+  <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h1>Welcome to<span class="text-warning"> Open Source BookHub </span></h1>
+                <p class="lead my-4">
+                  Explore a world of knowledge, discovery, and leisure, with our platform, where we cater to all your reading needs. Access thousands of resources of diverse genres and post a blog if you want. All for free!
+                </p>
+                <div class="btn btn-lg d-inline-flex">
+                  <a href="{% url 'file-list' %}" class="btn btn-warning mx-3 px-3">Read a book</a>
+
+                  <a href="{% url 'blogs' %}" class="btn btn-info mx-3 px-3">checkout the blog</a>
+                </div>
+            </div>
+            <link rel="stylesheet" href="">
+            <img class="img-fluid w-25 d-none d-sm-block" src="{% static 'img/OSBH-ART-cleaned.png' %}" alt="">
+        </div>
+    </div>
+</section>
+
+{# ----------- Uploader could go here ------------- #}
+
+<section class="bg-info text-light p-5">
+    <div class="container">
+        <div class="d-md-flex justify-content-center align-items-center">
+          <div>
+            <h3 class="mb-3 mb-md-0 me-5">Wanna share your favourite book with the world?</h3>
+          </div>
+          <div>
+              {% if user.is_authenticated %}
+              <a href="{% url 'file-upload' %}" class="btn btn-warning btn-lg">Upload file</a>
+              {% else %}
+              <a class="btn btn-light btn-lg" href="{% url 'account_signup' %}?next={{request.path}}">Create an account</a>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+</section>
+
+{# ----------- Boxes for blogs----------------- #}
+<section id="blog" class="p-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-facebook"></i>
+                        </div>
+                        <h3 class="card-title mb-3">blog 1
+                        </h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                        </p>
+                        <a href="#" class="btn btn-info">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg-secondary text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-stopwatch-fill"></i>
+                        </div>
+                        <h3 class="card-title mb-3">blog 2
+                        </h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                        </p>
+                        <a href="#" class="btn btn-dark">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-cloud-download"></i>
+                        </div>
+                        <h3 class="card-title mb-3">blog 3
+                        </h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                        </p>
+                        <a href="#" class="btn btn-info">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ---------- Learn Section -------------- #}
+<section id="collaborate" class="p-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md">
+                <img src="{% static 'img/collaboration2.svg' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-md p-5">
+                <h2>Collaborate with us</h2>
+                <p class="lead">
+                    Hey there book lovers and tech enthusiasts! Are you looking for an opportunity to use your passions or skills to make a difference in the world of literature? Look no further than our <span class="text-info h5">Open Source BookHub </span > project! We are a group of passionate developers dedicated to creating a platform for readers to write, teach what they know, connect, discuss, and share their favorite books.
+                </p>
+                <p>
+                    Lovers of knowledge, we believe that everyone should have access to great literature, regardless of their location or financial situation. By contributing to our project, you will be helping to make this vision a reality.
+                    Also for the developers, whether experienced or just starting out, if there is something you can help us do better, please, let us know.
+                    We value diversity and welcome contributions from people of all backgrounds and skill levels. So if you have a love for books and a desire to make a positive impact on the world, pitch in today!
+                </p>
+                <a href="#collaborate" class="btn btn-light mt-3"><i class="bi bi-chevron-right"></i> Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ---------- Forum -------------- #}
+<section id="forum" class="p-5 bg-dark text-light">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md p-5">
+                <h2>Checkout the forum</h2>
+                <p class="lead">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid amet id quasi, veniam dolorum quidem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita facilis quas, voluptates ducimus reprehenderit eligendi minus officiis ut beatae dignissimos nobis ipsum earum numquam dolor quisquam est iste? Ad, doloribus.
+                </p>
+                <a href="#teachn" class="btn btn-light mt-3"><i class="bi bi-chevron-right"></i> Read More</a>
+            </div>
+            <div class="col-md">
+                <img src="{% static 'img/onlineconnection.svg' %}" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ---------- FAQ Accordion -------------- #}
+
+<section id="" class="p-5 text-dark">
+    <div class="container">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion accordion-flush" id="faqs">
+            {# --------Item 1-------- #}
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-one" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Who OSBH aims to serve
+                </button>
+              </h2>
+              <div id="faqs-one" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
+                <div class="accordion-body">We aim to reach the whole world and people from all walks of life, whether they be students, educators, professionals, researchers, passionate or leisure readers .</div>
+              </div>
+            </div>
+            {# --------Item 2-------- #}
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-two" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Some problems OSBH intend to solve 
+                  </button>
+                </h2>
+                <div id="faqs-two" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
+                  <div class="accordion-body">
+                    <ul>
+                        <li>
+                            <h5>Cost</h5>
+                            <p>
+                                OS|BH can provide free access to a wide range of materials on a variety of topics, which can help to reduce financial barriers to learning and exploration. One of the primary problems that OS|BH aims to solve the high cost of educational resources, which can be a significant barrier for individuals and institutions with limited financial resources. Thus, it will engender access to information and educational resources by providing free and open access to a vast collection of digital books, articles, tutorials, journals, and other learning materials.</p>
+                                <p>Also, traditional books and resources related to hobbies and passions can be expensive, which can limit access to these materials for people with limited financial resources. We hope that this makes it easier to engage in leisure readings or studies. 
+                            </p>
+                        </li>
+                        <li>
+                            <h5>Limited Access</h5>
+                            <P>
+                                People who are interested in niche topics or hobbies may struggle to find relevant materials in traditional libraries or bookstores. Our Open Source E-library can provide access to a wide range of materials on these topics, regardless of their popularity or mainstream appeal.
+                            </P>
+                        </li>
+                        <li>
+                            <h5>Geographic Constraints</h5>
+                            <P>
+                                People who live in remote or rural areas may struggle to access materials related to their interests or hobbies. OS|BH can provide access to materials regardless of geographic location, as long as the individual has access to the internet.
+                            </P>
+                        </li>
+                        <li>
+                            <h5>Outdated Materials</h5>
+                            <P>
+                                Some books or other resources related to hobbies or passions may be out of print or otherwise unavailable in traditional libraries or bookstores. OS|BH can provide access to materials that may be difficult or impossible to find elsewhere, helping to preserve knowledge and learning related to niche topics
+                            </P>
+                        </li>
+                        <li>
+                            <P>
+                                Overall, OSBH can be a valuable resource for people who are interested in learning more about niche topics or pursuing hobbies and passions, providing access to a wide range of materials regardless of geographic location, financial resources, or language barriers.
+                            </P>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {# --------Item 3-------- #}
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-three" aria-expanded="false" aria-controls="flush-collapseOne">
+                    What other services does OSBH offer
+                  </button>
+                </h2>
+                <div id="faqs-three" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
+                  <div class="accordion-body">OSBH has a blog section, forum, and tutorials section for users to engage with</div>
+                </div>
+            </div>
+            {# --------Item 4-------- #}
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-four" aria-expanded="false" aria-controls="flush-collapseOne">
+                    How do I sign up
+                  </button>
+                </h2>
+                <div id="faqs-four" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
+                  <div class="accordion-body">Follow this <a href="#signup" class="text-info">link</a>  to create an account so as to enjoy the full benefits as a user</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# --------- Founding Devs ------------- #}
+<section id="developers" class="p-5 bg-info">
+    <h2 class="text-center text-white">
+        The Founding Developers
+    </h2>
+    <p class="lead text-center text-white mb-5">
+        Our founding developers all have years of learning and building, using emerging and cutting-edge tech tools. They are a trio of creative, passionate and solution-driven go-getters with humanity at heart.
+    </p>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <img src="https://github.com/Kaditcuy.png" alt="" class="rounded-circle mb-3">
+                    <h3 class="card-title mb-3">
+                        Kaditcuy
+                    </h3>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati itaque deserunt facilis earum id totam!
+                    </p>
+                    <a target="_blank" href="https://twitter.com/_Ukanwoke"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/philip-ukanwoke-81a611209/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://github.com/Kaditcuy"><i class="bi bi-github text-dark mx-1"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <img src="https://github.com/Rotex5.png?size=210" alt="" class="rounded-circle mb-3">
+                    <h3 class="card-title mb-3">
+                        Rotex5
+                    </h3>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati itaque deserunt facilis earum id totam!
+                    </p>
+                    <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in//davidson-ogaraku-a9547aa7/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://github.com/Rotex5"><i class="bi bi-github text-dark mx-1"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <img src="https://github.com/David-Inkheart.png?size=210" alt="" class="rounded-circle mb-3">
+                    <h3 class="card-title mb-3">
+                        David-Inkheart
+                    </h3>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati itaque deserunt facilis earum id totam!
+                    </p>
+                    <a target="_blank" href="https://twitter.com/David_Inkheart"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/david-okolie/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    <a target="_blank" href="https://github.com/David-Inkheart"><i class="bi bi-github text-dark mx-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -36,7 +36,7 @@ class File(models.Model):
         ('B', 'Biography'),
         ('BC', 'Business & Career'),
         ('E', 'Environment'),
-        ('FL', 'Fiction & Lterature'),
+        ('FL', 'Fiction & Literature'),
         ('HF', 'Health & Fitness'),
         ('LS', 'Lifestyle'),
         ('PG', 'Personal Growth'),
