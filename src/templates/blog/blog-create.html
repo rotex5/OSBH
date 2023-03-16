@@ -2,14 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="container">
-    <div class='col-md-6 offset-md-3'>
-      <h3>Post a Blog</h3>
-      <form method="post" enctype='multipart/form-data'>
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+
+<div class="container py-5">
+    <div class="container">
+      <div class='col-md-6 offset-md-3'>
+        <h3>Post a Blog</h3>
+        <form method="post" enctype='multipart/form-data'>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
-  </div>
+
+</div>
 {% endblock %}

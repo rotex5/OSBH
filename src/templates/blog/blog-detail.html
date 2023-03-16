@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<div class="container py-5">
+
 {% if user.is_authenticated and request.user.username == blog.author.user.username %}
         <p><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update</a></p>
         {% if user.is_staff or request.user.username == blog.author.user.username %}
@@ -64,5 +66,5 @@
     </div>
   </div>
 
-
+</div>
 {% endblock %}

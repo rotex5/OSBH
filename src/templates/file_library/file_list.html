@@ -2,14 +2,17 @@
 
 {% block content %}
 
-<div class="container pt-5">
-
-  {% block content_header %}
-    <h2>Latest Books Uploaded</h2>
+<div class="container py-5">
+    <div class="text-center py-2">
+      {% block content_header %}
+      <h2>Latest Books Uploaded</h2>
+    </div>
     {% if user.is_authenticated %}
-    <p>
-      <a href="{% url 'file-upload' %}" class="btn btn-primary">Upload file</a>
-    </p>
+    <div class="d-sm-flex justify-content-around align-items-center">
+      <div>
+        <a href="{% url 'file-upload' %}" class="btn btn-info">Upload file</a>
+      </div>
+    </div>
     {% endif %}
   {% endblock %}
 
@@ -26,7 +29,7 @@
         <tr>
           <td>
             {% if file.cover %}
-              <img src="{{ file.cover.url }}" alt="{{ file.title }}" style="width:100px;">
+              <img class="img-fluid zoom-on-hover" src="{{ file.cover.url }}" alt="{{ file.title }}" style="width:100px;">
             {% else %}
               <span class="text-muted">No cover</span>
             {% endif %}
@@ -41,6 +44,59 @@
       {% endfor %}
     </tbody>
   </table>
+
+  {# ----------- Boxes for blogs----------------- #}
+  <section id="blog" class="p-5">
+      <div class="container">
+          <div class="row text-center g-4">
+              <div class="col-md">
+                  <div class="card bg-dark text-light">
+                      <div class="card-body text-center">
+                          <div class="h1 mb-3">
+                              <i class="bi bi-facebook"></i>
+                          </div>
+                          <h3 class="card-title mb-3">blog 1
+                          </h3>
+                          <p class="card-text">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                          </p>
+                          <a href="#" class="btn btn-info">Read More</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="card bg-secondary text-light">
+                      <div class="card-body text-center">
+                          <div class="h1 mb-3">
+                              <i class="bi bi-stopwatch-fill"></i>
+                          </div>
+                          <h3 class="card-title mb-3">blog 2
+                          </h3>
+                          <p class="card-text">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                          </p>
+                          <a href="#" class="btn btn-dark">Read More</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="card bg-dark text-light">
+                      <div class="card-body text-center">
+                          <div class="h1 mb-3">
+                              <i class="bi bi-cloud-download"></i>
+                          </div>
+                          <h3 class="card-title mb-3">blog 3
+                          </h3>
+                          <p class="card-text">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
+                          </p>
+                          <a href="#" class="btn btn-info">Read More</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 
 </div>
 {% endblock %}

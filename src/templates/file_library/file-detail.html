@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<div class="container py-5 vh-100">
+
   {% block content_header %}
     <h2>Files</h2>
     {% if user.is_authenticated %}
@@ -61,4 +63,6 @@
         </tr>
     </tbody>
   </table>
+
+</div>
 {% endblock %}

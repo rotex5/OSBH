@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="container py-5 vh-100">
   <center>
     {% if searched %}
       {% if file_results %}
@@ -30,4 +32,6 @@
       <h3>No results found.</h3>
     {% endif%}
   </center>
+
+</div>
 {% endblock %}

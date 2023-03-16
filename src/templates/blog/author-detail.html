@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Blogger: {{author.user.username}}</h1>
-<h3>Bio</h3>  
-{{author.bio}}
 
-<h4>Blogs list</h4>
-<div style="margin-left:20px;margin-top:20px">
-  <ul>
-    {% for blog in author.blog_set.all.reverse %}
-    <li>
-    <a href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a></strong> ({{blog.post_date}})
-    </li>
-    {% endfor %}
-  </ul>
+<div class="container py-5">
+  <h1>Blogger: {{author.user.username}}</h1>
+  <h3>Bio</h3>  
+  {{author.bio}}
+
+  <h4>Blogs list</h4>
+  <div style="margin-left:20px;margin-top:20px">
+    <ul>
+      {% for blog in author.blog_set.all.reverse %}
+      <li>
+      <a href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a></strong> ({{blog.post_date}})
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
 </div>
 {% endblock %}

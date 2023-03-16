@@ -5,7 +5,7 @@
 {% block content %}
 
   {# ------ Showcase who we are --------- #}
-  <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+  <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start vh-100">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <link rel="stylesheet" href="">
-            <img class="img-fluid w-25 d-none d-sm-block" src="{% static 'img/OSBH-ART-cleaned.png' %}" alt="">
+            <img class="img-fluid w-50 d-md-block pt-5" src="{% static 'img/OSBH-ART-cleaned.png' %}" alt="">
         </div>
     </div>
 </section>
@@ -44,58 +44,6 @@
     </div>
 </section>
 
-{# ----------- Boxes for blogs----------------- #}
-<section id="blog" class="p-5">
-    <div class="container">
-        <div class="row text-center g-4">
-            <div class="col-md">
-                <div class="card bg-dark text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-facebook"></i>
-                        </div>
-                        <h3 class="card-title mb-3">blog 1
-                        </h3>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
-                        </p>
-                        <a href="#" class="btn btn-info">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-secondary text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-stopwatch-fill"></i>
-                        </div>
-                        <h3 class="card-title mb-3">blog 2
-                        </h3>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
-                        </p>
-                        <a href="#" class="btn btn-dark">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-dark text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-cloud-download"></i>
-                        </div>
-                        <h3 class="card-title mb-3">blog 3
-                        </h3>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ab impedit fuga nihil, nemo sapiente?
-                        </p>
-                        <a href="#" class="btn btn-info">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 {# ---------- Learn Section -------------- #}
 <section id="collaborate" class="p-5">
@@ -143,7 +91,7 @@
 
 {# ---------- FAQ Accordion -------------- #}
 
-<section id="" class="p-5 text-dark">
+<section id="FAQS" class="p-5 text-dark">
     <div class="container">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
         <div class="accordion accordion-flush" id="faqs">
