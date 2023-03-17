@@ -14,7 +14,7 @@ class FileUploader(models.Model):
     has_uploaded = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ["user","has_uploaded"]
+        ordering = ["user", "has_uploaded"]
 
     def __str__(self):
         """
@@ -28,8 +28,10 @@ class File(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     pdf = models.FileField(upload_to='files/pdfs/')
-    cover = models.ImageField(upload_to='files/covers/', null=True, blank=True)
-    uploader = models.ForeignKey(FileUploader, on_delete=models.SET_NULL, null=True, blank=True)
+    cover = models.ImageField(upload_to='files/covers/', null=True,
+                              blank=True, default='files/covers/default.jpg')
+    uploader = models.ForeignKey(
+        FileUploader, on_delete=models.SET_NULL, null=True, blank=True)
     PICK_CATEGORY = (
         ('A', 'Art'),
         ('AE', 'Academic & Education'),
@@ -45,7 +47,8 @@ class File(models.Model):
         ('SR', 'Science & Research'),
         ('T', 'Technology'),
     )
-    category = models.CharField(max_length=2, choices=PICK_CATEGORY, blank=True, default='AE')
+    category = models.CharField(
+        max_length=2, choices=PICK_CATEGORY, blank=True, default='AE')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
@@ -57,7 +60,7 @@ class File(models.Model):
         return self.title
 
 
-@receiver(post_save, sender = User)
+@receiver(post_save, sender=User)
 def user_is_created(sender, instance, created, **kwargs):
     """ When any user instance created, FileUploader object
     instance is created and automatically linked by User """
