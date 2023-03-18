@@ -9,5 +9,6 @@ urlpatterns = [
     path('search-results', views.search_result, name='search-result'),
     path('contact_us', views.contact_us, name='contact_us'),
     path('copyright', views.copyright, name='copyright'),
-    path('terms-privacy', views.terms_privacy, name='terms-privacy')
+    path('terms-privacy', views.terms_privacy, name='terms-privacy'),
+    path('forum', views.forum, name='forum')
 ]

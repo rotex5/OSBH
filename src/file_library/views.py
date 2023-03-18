@@ -100,6 +100,10 @@ def contact_us(request):
     return render(request, 'file_library/contact_us.html', {'form': form})
 
 
+def forum(request):
+    return render(request, 'file_library/forum.html')
+
+
 def copyright(request):
     return render(request, 'file_library/copyright.html')
 
