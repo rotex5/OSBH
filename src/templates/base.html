@@ -77,8 +77,8 @@
 
     {% if messages %}
       {% for message in messages %}
-      <div class="d-flex mt-4 center-block">
-        <div class="justify-content-center z-index-1 position-absolute alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <div class="mt-4">
+        <div class="position-absolute end-50 bottom-0 alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
           {{ message }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

@@ -8,7 +8,7 @@
     <h2>Files</h2>
     {% if user.is_authenticated %}
     <p>
-      <a href="{% url 'file-upload' %}" class="btn btn-primary">Upload file</a>
+      <a href="{% url 'file-upload' %}" class="btn btn-info">Upload file</a>
     </p>
     {% endif %}
   {% endblock %}
@@ -35,9 +35,27 @@
           <td>{{ file.title }}</td>
           <td>{{ file.author }}</td>
           <td>
-            <a href="{{ file.pdf.url }}" class="btn btn-warning btn-sm" target="_blank">
-              Preview File
-            </a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#previewModal">
+              Preview
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-info" id="previewModalLabel">{{ file.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <embed src="{{ file.pdf.url }}#toolbar=0" frameborder="0" width="100%" height="500px">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </td>
           {% if user.is_authenticated %}
             {%if uploader.has_uploaded %}
