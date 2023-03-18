@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-3 py-5">
+    <div class="text-info h1 mb-4">
+        OSBH Disclaimer and Copyright
+    </div>
+    <p class="lead">
+         OSBH respects the intellectual property rights of others and expects its users to do the same. In accordance with the Digital Millennium Copyright Act of 1998, the text of which may be found on the U.S. Copyright Office website at <a target="_blank" class="text-info text-decoration-none" href="http://www.copyright.gov/legislation/dmca.pdf"> http://www.copyright.gov/legislation/dmca.pdf</a>, OSBH will respond expeditiously to claims of copyright infringement committed using the OSBH service and/or the OSBH website. 
+    </p>
+    <p>
+        All the information on this website is published in good faith and for general information purpose only. OSBH does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (www.OSBH.com), is strictly at your own risk. www.OSBH.com will not be liable for any losses and/or damages in connection with the use of OSBH.<br><br>
+        From OSBH, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone ‘bad’.<br><br>
+        On the download page you can find the remote file source url. Please contact them also to remove your copyrighted material. If you do not want search engines to index your PDF files (or other specific filetypes) you can use an X-Robots tag within your HTTP header to prevent this. Here is a Google page about the topic: <a target="_blank" class="text-info text-decoration-none" href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag">Robots meta tag specifications</a>. <br><br>
+        Please be also aware that when you leave OSBH, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their “Terms of Service” before engaging in any business or uploading any information.
+    </p>
+    <h4>Consent</h4>
+    <p>
+        By using our website, you hereby consent to our disclaimer and agree to its <a class="text-info text-decoration-none" href="{% url 'terms-privacy' %}">Terms</a>
+    </p>
+    </p>
+    <h4>Update</h4>
+    <p>
+        Should we update, amend or make any changes to this document, those changes will be prominently posted here
+    </p>
+</div>
+
+{% endblock %}

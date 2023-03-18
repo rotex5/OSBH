@@ -11,7 +11,7 @@
             <div>
                 <h1>Welcome to<span class="text-warning"> Open Source BookHub </span></h1>
                 <p class="lead my-4">
-                  Explore a world of knowledge, discovery, and leisure, with our platform, where we cater to all your reading needs. Access thousands of resources of diverse genres and post a blog if you want. All for free!
+                  Explore a world of knowledge, discovery, and leisure with our platform, where we cater to all your reading needs. Access thousands of resources of diverse genres and post a blog if you want. All for free!
                 </p>
                 <div class="btn btn-lg d-inline-flex">
                   <a href="{% url 'file-list' %}" class="btn btn-warning mx-3 px-3">Read a book</a>
@@ -45,7 +45,7 @@
 </section>
 
 
-{# ---------- Learn Section -------------- #}
+{# ---------- Collaborate Section -------------- #}
 <section id="collaborate" class="p-5">
     <div class="container">
         <div class="row align-items-center justify-content-between">
@@ -55,14 +55,14 @@
             <div class="col-md p-5">
                 <h2>Collaborate with us</h2>
                 <p class="lead">
-                    Hey there book lovers and tech enthusiasts! Are you looking for an opportunity to use your passions or skills to make a difference in the world of literature? Look no further than our <span class="text-info h5">Open Source BookHub </span > project! We are a group of passionate developers dedicated to creating a platform for readers to write, teach what they know, connect, discuss, and share their favorite books.
+                    Hey there book lovers and tech enthusiasts! Are you looking for an opportunity to use your passions or skills to make a difference in the world of literature? Look no further than our <span class="text-info h5">Open Source BookHub </span > project! We are a group of passionate developers dedicated to creating a platform for readers to write, connect, discuss, and share their favorite books.
                 </p>
                 <p>
-                    Lovers of knowledge, we believe that everyone should have access to great literature, regardless of their location or financial situation. By contributing to our project, you will be helping to make this vision a reality.
-                    Also for the developers, whether experienced or just starting out, if there is something you can help us do better, please, let us know.
+                    We believe that everyone should have access to great literature, regardless of their location or financial situation and by contributing to our project, you will be helping to make this vision a reality.
+                    Developers, whether experienced or just starting out, if there is something you can help us do better, please, let us know.
                     We value diversity and welcome contributions from people of all backgrounds and skill levels. So if you have a love for books and a desire to make a positive impact on the world, pitch in today!
                 </p>
-                <a href="#collaborate" class="btn btn-light mt-3"><i class="bi bi-chevron-right"></i> Read More</a>
+                <a href="{% url 'contact_us' %}" class="btn btn-light mt-3 hover-effect"><i class="bi bi-chevron-right"></i> Reach Out</a>
             </div>
         </div>
     </div>
@@ -169,7 +169,7 @@
                   </button>
                 </h2>
                 <div id="faqs-four" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
-                  <div class="accordion-body">Follow this <a href="#signup" class="text-info">link</a>  to create an account so as to enjoy the full benefits as a user</div>
+                  <div class="accordion-body">Follow this <a href="{% url 'account_signup' %}?next={{request.path}}" class="text-info">link</a>  to create an account so as to enjoy the full benefits as a user</div>
                 </div>
             </div>
         </div>

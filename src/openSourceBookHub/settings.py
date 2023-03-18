@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-cgb)24l$fn7-d+2b3kz!!xs#9y-a__95jpt8@n=e!8^ek12n_j
 DEBUG = True
 
 ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['*']
-#CSRF_TRUSTED_ORIGINS = ['https://ea6f-197-210-28-38.ngrok.io']
+# ALLOWED_HOSTS = ['*']
+# CSRF_TRUSTED_ORIGINS = ['https://ea6f-197-210-28-38.ngrok.io']
 
 # Application definition
 
@@ -149,7 +149,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -167,6 +166,8 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
