@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+<div class="container mt-3 py-5">
+    <div class="text-info h1 mb-4">
+        Contact us
+    </div>
+    <h4>Can't find what you are looking for? have a suggestion or complaint?</h4>
+    <p class="lead">
+         We will be happy to contact you directly and reply as soon as possible. 
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            {{form.first_name|as_crispy_field}}
+          </div>
+          <div class="col-lg-6 col-md-12">
+            {{form.last_name|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+            {{form.email_address|as_crispy_field}}
+        </div>
+        <div class="row">
+            {{form.message|as_crispy_field}}
+        </div>
+            <button class="btn btn-info" type="submit">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}
