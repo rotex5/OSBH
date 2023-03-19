@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% block content_header %}
+      {% if user.is_authenticated %}
+      <p>
+        <a href="{% url 'forum-create' %}" class="btn btn-primary">Create a new forum</a>
+      </p>  
+      {% endif%}
+    {% endblock %}
+    <h1>All Forums</h1>
+
+    {% if forums %}
+    <ul>
+
+      {% for forum in forums %}
+      <li>
+        <a href="{{ forum.get_absolute_url }}">{{ forum.topic }}</a> ({{forum.date_created|timesince}} ago)</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>There are no forums created yet.</p>
+    {% endif %}       
+{% endblock %}

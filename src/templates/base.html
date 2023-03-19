@@ -26,6 +26,12 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'blogs' %}">Blog <span class="sr-only"></span></a>
           </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'forums' %}">Forum<span class="sr-only"></span></a>
+          </li>
+
+
           {% if request.user.is_authenticated %}
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'account_logout' %}?next={{request.path}}">Logout</a>
