@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('file_library.urls')),
     path('blog/', include('blog.urls')),
     path('accounts/', include('allauth.urls')),
+    path('forum/', include('forum.urls')),
 ]
 
 if settings.DEBUG:
