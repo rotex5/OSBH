@@ -20,7 +20,7 @@ def forum_create(request):
     if request.method == "POST":
         form = ForumForm(request.POST)
         if form.is_valid():
-            creator = get_object_or_404(User, user=request.user)
+            creator = get_object_or_404(User, username=request.user)
             form.instance.creator =  creator   
             form.save()
             id= form.instance.id
