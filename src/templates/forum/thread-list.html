@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    
+    <div class="top-bar">
+        <h1>
+            Forum
+            {% if user.is_authenticated %}
+            <a href="{% url 'thread-create' %}" class="btn btn-primary float-end addmargin">Create a new thread</a>
+            {% else %}
+            <a href="{% url 'account_login' %}?next={{request.path}}" class="btn btn-secondary btn-block float-end addmargin">Login to create a thread</a>
+            {% endif%}
+        </h1>
+    </div>
+    <div class="main">
+        <ol>
+          {% for thread in threads %}
+          <li class="row">
+            <a href="{{ thread.get_absolute_url }}">
+              <h4 class="title">{{thread.title}}</h4>
+              <div class="bottom">
+                <p class="timestamp">{{thread.timestamp|timesince}} ago</p>
+                <p class="comment-count">
+                  {{thread.discussion_set.all.count}} comments
+                </p>
+              </div>
+            </a>
+          </li>
+          {% endfor %}
+        </ol>
+    </div>
+   
+    <style>
+        body {
+            margin: 10px 60px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        h1, h4, ol {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .addmargin {
+            margin-top: 5px;
+        }
+        .top-bar {
+            background-color: skyblue;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+        .main {
+            background-color: #F6F6EF;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+        .row {
+            padding: 5px 0;
+        }
+        .bottom {
+            display: flex;
+            color: grey;
+            font-size: 12px;
+        }
+        .timestamp {
+            padding-right: 10px;
+        }
+    </style>
+
+
+</body>
+
+{% endblock %}

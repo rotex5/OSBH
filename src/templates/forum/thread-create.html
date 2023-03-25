@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+    
+    <div class="top-bar">
+        <h1>
+            Forum
+        </h1>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div class='col-md-6 offset-md-3'>
+        <h3>Create a new Thread!</h3>
+        <form method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      </div>
+    </div>
+   
+    <style>
+        body {
+            margin: 10px 60px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        h1, h4, ol {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .top-bar {
+            background-color: skyblue;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+        .main {
+            background-color: #F6F6EF;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+        .row {
+            padding: 5px 0;
+        }
+        .bottom {
+            display: flex;
+            color: grey;
+            font-size: 12px;
+        }
+        .timestamp {
+            padding-right: 10px;
+        }
+    </style>
+
+
+</body>
+
+{% endblock %}

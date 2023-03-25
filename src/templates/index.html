@@ -41,15 +41,6 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navmenu">
-            <div class="navbar-nav pt-2">
-              <form class="nav-item active d-flex" role="search" method="POST" action="{% url 'search-result' %}">
-                {% csrf_token %}
-                <button class="btn btn-outline-info" type="submit">Search</button>
-                <input class="form-control me-2 col-lg-8" type="search" name="searched" placeholder="Search" aria-label="Search">
-              </form>
-
-               
-            </div>
               <ul class="navbar-nav ms-auto" >
                   <li class="nav-item active">
                       <a href="{% url 'blogs' %}" class="nav-link">Blog</a>

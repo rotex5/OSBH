@@ -15,8 +15,10 @@ def landing_page(request):
 
 def file_list(request):
     files = File.objects.all()
+    blogs = Blog.objects.all()[:3]
     context = {
-        'files': files
+        'files': files,
+        'blogs': blogs
     }
     return render(request, 'file_library/file_list.html', context)
 

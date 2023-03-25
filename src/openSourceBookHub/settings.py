@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # Add new applications
     'file_library.apps.FileLibraryConfig',
     'blog.apps.BlogConfig',
+    'forum.apps.ForumConfig',
 ]
 
 MIDDLEWARE = [

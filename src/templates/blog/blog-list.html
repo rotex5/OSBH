@@ -18,7 +18,6 @@
       {% for blog in blog_list %}
       <li>
         <a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.publish_date|timesince}} ago) — <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
-        {# <a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.post_date}}) — <a href="#">{{ blog.author }}</a> #}
       </li>
       {% endfor %}
 
