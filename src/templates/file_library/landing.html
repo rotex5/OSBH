@@ -16,7 +16,7 @@
                 <div class="btn btn-lg d-inline-flex">
                   <a href="{% url 'file-list' %}" class="btn btn-warning mx-3 px-3">Read a book</a>
 
-                  <a href="{% url 'blogs' %}" class="btn btn-info mx-3 px-3">checkout the blog</a>
+                  <a href="{% url 'blogs' %}" class="btn btn-info mx-3 px-3">Checkout the blog</a>
                 </div>
             </div>
             <link rel="stylesheet" href="">
@@ -35,7 +35,7 @@
           </div>
           <div>
               {% if user.is_authenticated %}
-              <a href="{% url 'file-upload' %}" class="btn btn-warning btn-lg">Go Ahead</a>
+              <a href="{% url 'file-upload' %}" class="btn btn-warning btn-lg">Go ahead</a>
               {% else %}
               <a class="btn btn-light btn-lg" href="{% url 'account_signup' %}?next={{request.path}}">Create an account</a>
             {% endif %}
