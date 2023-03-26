@@ -2,114 +2,59 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<body>
-    <div class="top-bar">
+  <div class="container py-4 my-1">
+    <div class="top-bar bg-info px-5 py-1">
         <h1>
             Forum
         </h1>
         
     </div>
-    <div class="main">
+    <div class="main bg-light px-5">
         <div class="header">
-          <h4 class="title">
+          <h3 class="title pt-3">
            {{thread.title}}
           </h4>
           {% if thread.content %}
           <br>
-          <div>
+          <div class="fs-5">
             {{thread.content}}
           </div>
           {% endif %}
-          <div class="bottom">
-            <p class="timestamp">
-              {{thread.timestamp|timesince}} ago
-            </p>
-            <p class="comment-count">
-              {{thread.discussion_set.all.count}} comments
-            </p>
+          <div class="d-flex text-muted fst-italic">
+              <p><small>
+                {{thread.timestamp|timesince}} ago
+              </small></p>
+              <p class="mx-3"><small>
+                {{thread.discussion_set.all.count}} comments
+              </small></p>
           </div>
         </div>
         {% if request.user.is_authenticated %}
-        <div clas="textspace">
+        <div class="textspace">
           <form method="POST">
             {% csrf_token %}
             {{ form|crispy }}
-            <button class='btn btn-primary' type='submit'>Comment</button>
+            <button class='btn btn-info' type='submit'>Post comment</button>
           </form>
         </div>
         {% else %}
             <a href="{% url 'account_login' %}?next={{request.path}}" class="btn btn-secondary btn-block">Login to comment</a>
         {% endif %}
-        <div class="comments">
+        <div class="mt-5">
           {% for comment in thread.discussion_set.all %} 
-          <div class="top-comment">
-            <p class="user">
-              {{comment.author}}
-            </p>
-            <p class="comment-ts">
-             {{comment.timestamp}}
-            </p>
-          </div>
           <div class="comment-content">
             {{comment.content}}
           </div>
-          <br>
+          <div class="d-flex text-muted fst-italic small">
+            <p class="user">
+              {{comment.author}}
+            </p>
+            <p class="mx-3">
+             {{comment.timestamp}}
+            </p>
+          </div>
           {% endfor %}
         </div>
     </div>
-  <style> 
-    body {
-            margin: 10px 60px;
-        }
-        a {
-            text-decoration: none;
-            color: black;
-        }
-        h1, h4, ol {
-            margin: 0;
-        }
-        p {
-            margin: 5px 0;
-        }
-        textspace {
-            width: 80%;
-            height: 80px;
-        }
-        button {
-            display: block;
-            margin: 10px 0;
-        }
-        .top-bar {
-            background-color: skyblue;
-            padding: 0 40px;
-            margin-top: 35px;
-        }
-        .main {
-            background-color: #F6F6EF;
-            padding: 10px 40px;
-            margin-bottom: 15px;
-        }
-        .comments {
-            margin: 40px 0;
-        }
-        .comment {
-            margin: 10px 0;
-        }
-        .row {
-            padding: 5px 0;
-        }
-        .bottom, .top-comment {
-            display: flex;
-            color: grey;
-            font-size: 12px;
-        }
-        .timestamp {
-            padding-right: 10px;
-        }
-        .comment-ts {
-            padding-left: 10px;
-        }
-  </style>
-</body>
-
+  </div>
 {% endblock %}

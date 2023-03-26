@@ -46,7 +46,7 @@
                       <a href="{% url 'blogs' %}" class="nav-link">Blog</a>
                   </li>
                   <li class="nav-item active">
-                      <a href="{% url 'forum' %}" class="nav-link">Forum</a>
+                      <a href="{% url 'landing-page' %}#forum" class="nav-link">Forum</a>
                   </li>
                   <li class="nav-item active">
                       <a href="{% url 'landing-page' %}#FAQS" class="nav-link">FAQs</a>
@@ -95,6 +95,8 @@
     <footer class="p-5 bg-dark text-white text-center    position-relative">
       <div class="container">
         <div class="d-sm-flex justify-content-center lead">
+          <a class="mx-1 me-md-4 text-muted text-decoration-none" target="_blank" href="https://github.com/rotex5/OSHB">GitHub Repo
+          </a>
           <a class="mx-1 me-md-4 text-muted text-decoration-none" href="{% url 'landing-page' %}">Home
           </a>
           <a class=" mx-1 me-md-4 text-muted text-decoration-none" href="{% url 'contact_us' %}">Contact Us
