@@ -16,10 +16,10 @@ def landing_page(request):
 
 
 def file_list(request):
-    files_list = File.objects.all()
+    files_list = File.objects.all().order_by('title')
     blogs = Blog.objects.all().order_by('-publish_date')[:3]
     page = request.GET.get('page', 1)
-    paginator = Paginator(files_list, 2)
+    paginator = Paginator(files_list, 5)
 
     try:
         files = paginator.page(page)
