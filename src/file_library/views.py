@@ -1,8 +1,10 @@
 # from django.core.exceptions import ObjectDoesNotExist
 # from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.utils import timezone
 # Create your views here.
 from .forms import FileForm, ContactForm
 from .models import File, FileUploader
@@ -14,8 +16,18 @@ def landing_page(request):
 
 
 def file_list(request):
-    files = File.objects.all()
-    blogs = Blog.objects.all()[:3]
+    files_list = File.objects.all()
+    blogs = Blog.objects.all().order_by('-publish_date')[:3]
+    page = request.GET.get('page', 1)
+    paginator = Paginator(files_list, 2)
+
+    try:
+        files = paginator.page(page)
+    except PageNotAnInteger:
+        files = paginator.page(1)
+    except EmptyPage:
+        files = paginator.page(paginator.num_pages)
+
     context = {
         'files': files,
         'blogs': blogs

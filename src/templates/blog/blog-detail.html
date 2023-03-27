@@ -4,49 +4,46 @@
 {% block content %}
 
 <div class="container py-5">
-
 {% if user.is_authenticated and request.user.username == blog.author.user.username %}
-        <p><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update</a></p>
+        <span><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update</a></span>
         {% if user.is_staff or request.user.username == blog.author.user.username %}
-        <p><a href="{% url 'blog-delete' blog.id %}" class="btn btn-danger">Delete</a></p>
+        <span><a href="{% url 'blog-delete' blog.id %}" class="btn btn-danger float-end">Delete</a></span>
         {% endif %}
 {% endif %}
 
   <div class='row'>
     <div class='col-15 offset-0'>
     <div class='card' style='padding: 10px;'>
-        <h1>{{ blog.title|title }}</h1>
+        <h2>{{ blog.title|title }}</h2>
         {% if blog.thumbnail %}
         <img src="{{ blog.thumbnail.url }}" class="card-img-top" alt="..." width="107" height="700">
         {% endif %}
-        <hr />
+        <br>
         <div>
-            <span><i class="fas fa-comments ml-2"></i> {{ blog.get_comment_count }}</span>
-            <span><i class="fas fa-eye ml-2"></i> {{ blog.get_view_count }}</span>
-            <span><i class="fas fa-thumbs-up ml-2"></i> {{ blog.get_like_count }}</span>
-            <span class='float-end'>Posted {{ blog.publish_date|timesince }} ago</span>
+        <h5>{{ blog.content }}</h5>
         </div>
-        <hr />
         <div>
-        <p>{{ blog.content }}</p>
+            <span><i class="fa-solid fa-comments"></i> {{ blog.get_comment_count }}</span>
+            <span><i class="fa-solid fa-eye"></i> {{ blog.get_view_count }}</span>
+            <span>
+              <a class="text-muted" href="{{ blog.get_like_url }}">
+                {% if request.user.is_authenticated %}
+                <i class="fa-solid fa-hands-clapping">
+                </i> {{ blog.get_like_count }}
+                {% endif %}
+              </a>
+            </span>
+            <span class='float-end'>Posted {{ blog.publish_date|timesince }} ago</span>
         </div>
         <div>
             {% if request.user.is_authenticated %}
-            <h4>Enjoy this post? Give it a like</h4>
-            <a class="text-muted" href="{{ blog.get_like_url }}">
-            .<i class="fas fa-thumbs-up fa-lg"></i> 
-            {{ blog.get_like_count }}
-            </a>
-            <hr />
-                <h4>Leave a comment below</h4>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class='btn btn-primary' type='submit'>Comment</button>
+                    <button class='btn btn-primary' type='submit'>Submit</button>
                 </form>
                 <hr />
                 <h5>Comments</h5>
-                <br />
                 {% for comment in blog.blogcomment_set.all %}
                     <div>
                         <p>{{comment.commenter}}
@@ -56,7 +53,6 @@
                         <small>{{ comment.timestamp|timesince }} ago</small>
                         </p>
                     </div>
-                    <hr />
                 {% endfor %}
             {% else %}
             <a href="{% url 'account_login' %}?next={{request.path}}" class="btn btn-primary btn-block">Login to comment</a>

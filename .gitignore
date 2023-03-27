@@ -9,8 +9,8 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 migrations
-media_root/*
 !media_root/files/covers/default.jpg
+media_root
 
 # Environments
 .env
