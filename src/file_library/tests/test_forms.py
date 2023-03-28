@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
-from filelibrary.models import File
-from filelibrary.forms import FileForm, ContactForm
+from file_library.models import File
+from file_library.forms import FileForm, ContactForm
 
 
 class FileFormTestCase(TestCase):
