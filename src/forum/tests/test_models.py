@@ -26,7 +26,7 @@ class ThreadModelTest(TestCase):
     def test_get_absolute_url(self):
         thread = Thread.objects.get(id=1)
         # This will also fail if the urlconf is not defined.
-        self.assertEquals(thread.get_absolute_url(), '/threads/1/')
+        self.assertEquals(thread.get_absolute_url(), '/forum/1')
 
 
 class DiscussionModelTest(TestCase):
