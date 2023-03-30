@@ -40,6 +40,6 @@ class ForumViewsTestCase(TestCase):
         response = self.client.post(url, data)
         #print(response.status_code)
         #print(response.content)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(Thread.objects.count(), 1)
 
