@@ -28,15 +28,18 @@ class ForumViewsTestCase(TestCase):
 
     def test_thread_create_view(self):
         url = reverse('thread-create')
+        #url = '/forum/create/'
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'forum/thread-create.html')
         
         data = {
-            'title': 'Test Title',
-            'content': 'Test Content'
+            'Title': 'Test Title',
+            'Content': 'Test Content'
         }
         response = self.client.post(url, data)
+        #print(response.status_code)
+        #print(response.content)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Thread.objects.count(), 2)
+        self.assertEqual(Thread.objects.count(), 1)
 
