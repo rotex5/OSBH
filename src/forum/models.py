@@ -34,7 +34,7 @@ class Discussion(models.Model):
     """
     Model representing a Discussion.
     """
-    thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE, default=None)
     content = models.CharField(max_length=1000)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
