@@ -14,12 +14,95 @@ body::before {
   text-decoration: none;
 }
 
-.on-hover:hover {
-background-color: rgb(232, 234, 224);
-font-size: x-large;
-transform: scale(1.005);
-transition: all 0.3s ease-in-out;
+.on-hover {
+  color: inherit;
+  text-decoration: none;
 }
+
+.on-hover {
+  background:
+    linear-gradient(
+      to right,
+      #0dcaf0,
+      rgba(100, 200, 200, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      #ffc107,
+      rgba(0, 100, 200, 1)
+      
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.on-hover:hover {
+  background-size: 0 3px, 100% 3px;
+}
+
+
+.book-div:hover {
+  transform: scale(1.005);
+  transition: all 0.3s ease-in-out;
+  background-color: #fff; /* set the background color of the div */
+  box-shadow: 0 0 20px #ffc107; /* set the first color of the shadow (osbh-yellow) */
+  }
+
+  .book {
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .book:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .book:hover {
+   background-position: 0;
+  }
+  
+  .book:hover::before {
+    width:100%;
+  }
+
+/* nice hover animation for footer */
+  .a-hover {
+    box-shadow: inset 0 0 0 0 #0dcaf0;
+    color: #0dcaf0;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  }
+
+  .a-hover:hover {
+    box-shadow: inset 100px 0 0 0 #0dcaf0;
+    color: white;
+  }
+
 
 @media(min-width: 768px) {
   .file-upload {

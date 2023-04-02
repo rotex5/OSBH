@@ -8,17 +8,16 @@
             Forum
         </h1>
     </div>
-    <div class="main bg-light">
+    <div class="main bg-light pb-5">
       <div class="container">
-        <div class='col-md-6 offset-md-3 py-4'>
+        <div class='col-md-6 offset-md-3 py-5'>
             <h3>Create a new Thread!</h3>
             <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit" class="btn btn-info">Submit</button>
             </form>
-      </div>
-
+        </div>
       </div>
     </div>
 </div>

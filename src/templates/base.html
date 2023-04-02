@@ -51,27 +51,27 @@
                
             </div>
               <ul class="navbar-nav ms-auto" >
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                       <a href="{% url 'blogs' %}" class="nav-link">Blog</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                       <a href="{% url 'forum' %}" class="nav-link">Forum</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                       <a href="{% url 'landing-page' %}#FAQS" class="nav-link">FAQs</a>
                   </li>
                   {% if request.user.is_authenticated %}
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                     <a class="nav-link" href="{% url 'account_logout' %}?next={{request.path}}">Logout</a>
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link text-info h5"> Welcome  {{ user.get_username }}</a>
                   </li>
                   {% else %}
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                     <a class="nav-link" href="{% url 'account_login' %}?next={{request.path}}">Login</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item active a-hover">
                     <a class="nav-link" href="{% url 'account_signup' %}?next={{request.path}}">Signup</a>
                   </li>
                   {% endif %}
@@ -104,25 +104,25 @@
     <footer class="p-5 bg-dark text-white text-center    position-relative">
       <div class="container">
         <div class="d-sm-flex justify-content-center lead">
-          <a class="mx-1 me-md-4 text-muted text-decoration-none" href="{% url 'landing-page' %}">Home
+          <a class="mx-1 me-md-4 text-muted text-decoration-none a-hover" href="{% url 'landing-page' %}">Home
           </a>
-          <a class=" mx-1 me-md-4 text-muted text-decoration-none" href="{% url 'contact_us' %}">Contact Us
+          <a class=" mx-1 me-md-4 text-muted text-decoration-none a-hover" href="{% url 'contact_us' %}">Contact
           </a>
           <p class="px-2 text-light">Copyright &copy; 2023 OS|BH</p>
-          <a class="mx-1 ms-md-4 text-muted text-decoration-none" href="{% url 'copyright' %}"
-          >DMCA & Copyright
+          <a class="mx-1 ms-md-4 text-muted text-decoration-none a-hover" href="{% url 'copyright' %}"
+          >DMCA
           </a>
-          <a class="mx-1 ms-md-4 text-muted text-decoration-none" href="{% url 'terms-privacy' %}"
-          >Terms & Privacy
+          <a class="mx-1 ms-md-4 text-muted text-decoration-none a-hover" href="{% url 'terms-privacy' %}"
+          >Terms
           </a>
         </div>
         <div>
           <p class="text-light">
-            Please note that most of the materials on the website are community-sourced, and users are uploading lots of books every day, which might make it hard for us to identify copyrighted material, please if you want any material removed,<a class="mx-1 text-muted" href="{% url 'contact_us' %}">reach out to us</a>
+            Please note that most of the materials on the website are community-sourced, and users are uploading lots of books every day, which might make it hard for us to identify copyrighted material, please if you want any material removed,<a class="mx-1 text-muted a-hover" href="{% url 'contact_us' %}">reach out</a>
           </p>
         </div>
           <a href="#" class="position-absolute bottom-0 end-0 p-5">
-              <i class="bi bi-arrow-up-circle h1 mb-2"></i>
+              <i class="bi bi-arrow-up-circle h1 mb-2 blog-list1"></i>
           </a>
       </div>
     </footer>

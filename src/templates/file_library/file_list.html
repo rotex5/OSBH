@@ -10,7 +10,7 @@
     {% if user.is_authenticated %}
     <div class="d-sm-flex justify-content-around align-items-center">
       <div>
-        <a href="{% url 'file-upload' %}" class="btn btn-info">Upload file</a>
+        <a href="{% url 'file-upload' %}" class="btn btn-info">Add a resource</a>
       </div>
     </div>
     {% endif %}
@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       {% for file in files %}
-        <tr>
+        <tr class="book-div">
           <td>
             {% if file.cover %}
               <img class="img-fluid zoom-on-hover" src="{{ file.cover.url }}" alt="{{ file.title }}" style="width:100px;">
@@ -35,7 +35,7 @@
             {% endif %}
           </td>
           <td>
-            <a href="{% url 'file-detail' file.id %}">
+            <a class="text-info lead text-decoration-none book" href="{% url 'file-detail' file.id %}">
               {{ file.title }}
             </a>
           </td>
@@ -87,18 +87,19 @@
   {# ----------- Boxes for blogs----------------- #}
     <section id="blog" class="p-5">
       <div class="container">
+        <P class="h2 text-info text-center mb-4">Check out the most recent blogs</P>
           <div class="row text-center g-4">
               {% for blog in blogs %}
               <div class="col-md">
-                  <div class="card bg-secondary text-light">
+                  <div class="card bg-light text-secondary">
                       <div class="card-body text-center">
                           <div class="h1 mb-3">
-                              <i class="fa-solid fa-blog"></i>
+                              <i class="fa fa-blog blog-list1"></i>
                           </div>
                           <h3 class="card-title mb-3">{{blog.title}}
                           </h3>
                           <p class="card-text">
-                              {{blog.content|truncatewords:20}}
+                              {{blog.content|safe|truncatewords:20}}
                           </p>
                           <a href="{{blog.get_absolute_url}}" class="btn btn-info">Read More</a>
                       </div>

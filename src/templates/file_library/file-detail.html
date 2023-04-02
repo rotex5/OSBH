@@ -5,10 +5,10 @@
 <div class="container py-5 vh-100">
 
   {% block content_header %}
-    <h2>Files</h2>
+    <h2>Selected Resource</h2>
     {% if user.is_authenticated %}
     <p>
-      <a href="{% url 'file-upload' %}" class="btn btn-info">Upload file</a>
+      <a href="{% url 'file-upload' %}" class="btn btn-info mt-3">Upload a book</a>
     </p>
     {% endif %}
   {% endblock %}

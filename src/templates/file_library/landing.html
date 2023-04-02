@@ -7,11 +7,11 @@
   {# ------ Showcase who we are --------- #}
   <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start vh-100">
     <div class="container">
-        <div class="d-sm-flex align-items-center justify-content-between">
+        <div class="d-md-flex align-items-center justify-content-between">
             <div>
                 <h1>Welcome to<span class="text-warning"> Open Source BookHub </span></h1>
                 <p class="lead my-4">
-                  Explore a world of knowledge, discovery, and leisure with our platform, where we cater to all your reading needs. Access thousands of resources of diverse genres and post a blog if you want. All for free!
+                  Explore a world of knowledge, discovery, and leisure. Access diverse genre of resources. All for free!
                 </p>
                 <div class="btn btn-lg d-inline-flex">
                   <a href="{% url 'file-list' %}" class="btn btn-warning mx-3 px-3">Read a book</a>
@@ -56,7 +56,7 @@
                 <h2>Collaborate with us</h2>
                 <div class="short-text">
                     <p class="lead">
-                        Hey there book lovers and tech enthusiasts! Are you looking for an opportunity to use your passions or skills to make a difference in the world of literature? Look no further than our <span class="text-info h5">Open Source BookHub </span > project! We are a group of passionate developers dedicated to creating a platform for readers to write, connect, discuss, and share their favorite books.
+                        Hey there bibliophiles and techies! Are you looking for an opportunity to use your passions or skills to make a difference in the world of literature? Look no further than our <span class="text-info h5">Open Source BookHub </span > project! We are a group of passionate developers dedicated to creating a <span class="text-warning h4">community</span> where people can connect, share, discuss, get resources and learn without barriers.
                     </p>
                     <a class="btn btn-light mt-3 me-3" data-bs-toggle="collapse" href="#long-text" role="button" aria-expanded="false" aria-controls="long-text">
                         Read More
@@ -175,11 +175,11 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-four" aria-expanded="false" aria-controls="flush-collapseOne">
-                    How do I sign up
+                    How do I join the community
                   </button>
                 </h2>
                 <div id="faqs-four" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#faqs">
-                  <div class="accordion-body">Follow this <a href="{% url 'account_signup' %}?next={{request.path}}" class="text-info">link</a>  to create an account so as to enjoy the full benefits as a user</div>
+                  <div class="accordion-body">Follow this <a href="{% url 'account_signup' %}?next={{request.path}}" class="text-info">link</a>  to create an account so as to enjoy the full benefits as a member</div>
                 </div>
             </div>
         </div>

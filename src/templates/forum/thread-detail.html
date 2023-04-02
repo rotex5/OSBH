@@ -6,11 +6,11 @@
     <div class="top-bar bg-info px-5 py-1">
         <h1>
             Forum
-        </h1>
-        
+            <a href="{% url 'forum' %}" class="float-end text-light small text-decoration-none mt-1">Thread</a>
+        </h1>    
     </div>
-    <div class="main bg-light px-5">
-        <div class="header">
+    <div class="main bg-light px-5 pb-5">
+        <div class="header pt-3 pb-5">
           <h3 class="title pt-3">
            {{thread.title}}
           </h4>
@@ -34,7 +34,7 @@
           <form method="POST">
             {% csrf_token %}
             {{ form|crispy }}
-            <button class='btn btn-info' type='submit'>Post comment</button>
+            <button class='btn btn-info mt-2 mb-5' type='submit'>Post comment</button>
           </form>
         </div>
         {% else %}

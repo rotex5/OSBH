@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container pt-5">
+<div class="container py-5">
     {% block content_header %}
       {% if user.is_authenticated %}
       <p class="py-3">
@@ -17,7 +17,7 @@
 
       {% for blog in blog_list %}
       <li class="mb-3 text-muted small">
-        <a class="blog-list1 lead on-hover" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.publish_date|timesince}} ago) — <a class="text-muted" href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
+        <a class="lead on-hover text-dark" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.publish_date|timesince}} ago) — <a class="text-muted" href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
       </li>
       {% endfor %}
 

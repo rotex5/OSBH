@@ -17,7 +17,7 @@
           {% for thread in threads %}
           <li class="row">
             <a class="text-decoration-none" href="{{ thread.get_absolute_url }}">
-              <h4 class="text-dark pt-4">{{thread.title}}</h4>
+              <h4 class="text-dark pt-4 book">{{thread.title}}</h4>
               <div class="d-flex text-muted">
                 <p class="timestamp">{{thread.timestamp|timesince}} ago</p>
                 <p class="px-4">
