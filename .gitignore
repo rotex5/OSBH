@@ -15,8 +15,10 @@ media_root
 # Environments
 .env
 .venv
+.myenv
 env/
 venv/
 ENV/
+myenv/
 env.bak/
 venv.bak/
