@@ -3,13 +3,14 @@
 
 {% block content %}
 
-  <div class="container py-5">
+  <div class="container py-5 my-2">
     <div class='col-md-6 offset-md-3'>
-      <h3>Post a Blog</h3>
+      <h3>Update your Blog</h3>
       <form method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {{ form.media }}
+        <button type="submit" class="btn btn-info">Update blog</button>
       </form>
     </div>
   </div>

@@ -5,19 +5,19 @@
 <div class="container pt-5">
     {% block content_header %}
       {% if user.is_authenticated %}
-      <p>
-        <a href="{% url 'blog-create' %}" class="btn btn-primary">Create a new blog</a>
+      <p class="py-3">
+        <a href="{% url 'blog-create' %}" class="btn btn-info">Create a new blog</a>
       </p>  
       {% endif%}
     {% endblock %}
-    <h1>All blogs</h1>
+    <h1 class="display-6 my-3">Latest blog posts</h1>
 
     {% if blog_list %}
-    <ul>
+    <ul class="list-unstyled">
 
       {% for blog in blog_list %}
-      <li>
-        <a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.publish_date|timesince}} ago) — <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
+      <li class="mb-3 text-muted small">
+        <a class="blog-list1 lead on-hover" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.publish_date|timesince}} ago) — <a class="text-muted" href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
       </li>
       {% endfor %}
 

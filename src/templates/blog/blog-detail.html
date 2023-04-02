@@ -3,28 +3,28 @@
 
 {% block content %}
 
-<div class="container py-5">
-{% if user.is_authenticated and request.user.username == blog.author.user.username %}
-        <span><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update</a></span>
-        {% if user.is_staff or request.user.username == blog.author.user.username %}
-        <span><a href="{% url 'blog-delete' blog.id %}" class="btn btn-danger float-end">Delete</a></span>
-        {% endif %}
-{% endif %}
+<div class="container py-5 mt-3">
+  {% if user.is_authenticated and request.user.username == blog.author.user.username %}
+          <span><a href="{% url 'blog-update' blog.id %}" class="btn btn-warning">Update BlogPost</a></span>
+          {% if user.is_staff or request.user.username == blog.author.user.username %}
+          <span><a href="{% url 'blog-delete' blog.id %}" class="btn btn-danger float-end">Delete Blogpost</a></span>
+          {% endif %}
+  {% endif %}
 
-  <div class='row'>
+  <div class='row pt-4'>
     <div class='col-15 offset-0'>
     <div class='card' style='padding: 10px;'>
-        <h2>{{ blog.title|title }}</h2>
+        <p class="display-6">{{ blog.title|title }}</p>
         {% if blog.thumbnail %}
         <img src="{{ blog.thumbnail.url }}" class="card-img-top" alt="..." width="107" height="700">
         {% endif %}
         <br>
-        <div>
-        <h5>{{ blog.content }}</h5>
+        <div class="mb-3">
+        <h5>{{ blog.content|safe }}</h5>
         </div>
-        <div>
-            <span><i class="fa-solid fa-comments"></i> {{ blog.get_comment_count }}</span>
-            <span><i class="fa-solid fa-eye"></i> {{ blog.get_view_count }}</span>
+        <div class="mb-3">
+            <span class="me-3"><i class="fa fa-comments blog-list1"></i> {{ blog.get_comment_count }}</span>
+            <span class="me-3"><i class="fa fa-eye blog-list1"></i> {{ blog.get_view_count }}</span>
             <span>
               <a class="text-muted" href="{{ blog.get_like_url }}">
                 {% if request.user.is_authenticated %}
@@ -33,14 +33,15 @@
                 {% endif %}
               </a>
             </span>
-            <span class='float-end'>Posted {{ blog.publish_date|timesince }} ago</span>
+            <span class='float-end text-muted'>Posted {{ blog.publish_date|timesince }} ago</span>
         </div>
         <div>
             {% if request.user.is_authenticated %}
                 <form method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class='btn btn-primary' type='submit'>Submit</button>
+                    {{ form.media }}
+                    <button class='btn btn-info' type='submit'>Post Comment</button>
                 </form>
                 <hr />
                 <h5>Comments</h5>
@@ -50,7 +51,7 @@
                         <br />
                         {{ comment.content }}
                         <br />
-                        <small>{{ comment.timestamp|timesince }} ago</small>
+                        <small class="text-muted">{{ comment.timestamp|timesince }} ago</small>
                         </p>
                     </div>
                 {% endfor %}

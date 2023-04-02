@@ -4,15 +4,22 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 
+from ckeditor.fields import RichTextField
+
 
 class Blog(models.Model):
     """
     Model representing a blog post.
     """
     title = models.CharField(max_length=200)
-    content = models.TextField(max_length=2000)
-    thumbnail = models.ImageField(upload_to='blogs/thumbnails/', null=True, blank=True)
-    author = models.ForeignKey('BlogAuthor', on_delete=models.SET_NULL, null=True)
+    content = RichTextField(null=True, blank=True,
+                            config_name="special", external_plugin_resources=[(
+                                'youtube', '/static/shareledge/ckeditor-plugins/youtube/youtube/', 'plugin.js',
+                            )])
+    thumbnail = models.ImageField(
+        upload_to='blogs/thumbnails/', null=True, blank=True)
+    author = models.ForeignKey(
+        'BlogAuthor', on_delete=models.SET_NULL, null=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
@@ -28,13 +35,12 @@ class Blog(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.title
-   
+
     def get_like_url(self):
         """
         Returns the url to access a particular blog instance.
         """
         return reverse('blog-like', args=[str(self.id)])
-
 
     @property
     def get_comment_count(self):
@@ -54,7 +60,8 @@ class BlogAuthor(models.Model):
     Model representing a blog author.
     """
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
-    bio = models.TextField(max_length=400, help_text="Enter your bio details here.")
+    bio = models.TextField(
+        max_length=400, help_text="Enter your bio details here.")
 
     class Meta:
         ordering = ["user", "bio"]
@@ -77,8 +84,10 @@ class BlogComment(models.Model):
     Model representing a comment against a blog post.
     """
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    content = models.TextField(max_length=1000, help_text="Enter comment about blog here.")
-    commenter = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    content = models.TextField(
+        max_length=1000, help_text="Enter comment about blog here.")
+    commenter = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -94,6 +103,7 @@ class BlogComment(models.Model):
         else:
             titlestring = self.content
         return titlestring
+
 
 class BlogView(models.Model):
     """
@@ -113,12 +123,12 @@ class BlogLike(models.Model):
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.user.username
 
 
-@receiver(post_save, sender = User)
+@receiver(post_save, sender=User)
 def user_is_created(sender, instance, created, **kwargs):
     """ When any user instance created, FileUploader object
     instance is created and automatically linked by User """

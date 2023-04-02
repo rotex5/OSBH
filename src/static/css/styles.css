@@ -9,6 +9,18 @@ body::before {
   transition: all 0.5s ease-in-out;
 }
 
+.blog-list1 {
+  color: #31d2f2;
+  text-decoration: none;
+}
+
+.on-hover:hover {
+background-color: rgb(232, 234, 224);
+font-size: x-large;
+transform: scale(1.005);
+transition: all 0.3s ease-in-out;
+}
+
 @media(min-width: 768px) {
   .file-upload {
       width: 50%;

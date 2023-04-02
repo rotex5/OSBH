@@ -3,16 +3,16 @@
 {% block content %}
 
 <div class="container py-5 vh-100">
-  <h1>Blogger: {{author.user.username}}</h1>
-  <h3>Bio</h3>  
+  <p class="display-6">Blogger: {{author.user.username}}</p>
+  <h3 class="py-3">Bio</h3>  
   {{author.bio}}
 
   <h4>Blogs list</h4>
-  <div style="margin-left:20px;margin-top:20px">
-    <ul>
+  <div>
+    <ul class="list-unstyled">
       {% for blog in author.blog_set.all.reverse %}
-      <li>
-      <a href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a></strong> ({{blog.post_date}})
+      <li class="mb-3 text-muted small">
+      <a  class="blog-list1 lead on-hover" href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a></strong> ({{blog.post_date}})
       </li>
       {% endfor %}
     </ul>

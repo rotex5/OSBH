@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 # import environ
 import os
 from pathlib import Path
+import dj_database_url
+# import environ
 
 # Initialise environment variables
 # env = environ.Env()
@@ -25,13 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-cgb)24l$fn7-d+2b3kz!!xs#9y-a__95jpt8@n=e!8^ek12n_j'
+# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'http://127.0.0.1:8000']
 # CSRF_TRUSTED_ORIGINS = ['https://ea6f-197-210-28-38.ngrok.io']
 
 # Application definition
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap5",
+    "ckeditor",
 
     # Add new applications
     'file_library.apps.FileLibraryConfig',
@@ -64,6 +68,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,6 +107,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -176,34 +184,16 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
-# Provider specific settings
-"""
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
-    },
+CSRF_COOKIE_SECURE = True
 
-    'github': {
-        'APP': {
-            'client_id': env('GITHUB_CID'),
-            'secret': env('GITHUB_SECRET'),
-            'key': ''
-        }
-    },
+SESSION_COOKIE_SECURE = True
 
-    'twitter': {
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
-    }
-}
-"""
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# The URL to use when referring to static files (where they will be served from)
+# STATIC_URL = '/static/'
+
+# Simplified static file serving.
+# https://pypi.org/project/whitenoise/
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
