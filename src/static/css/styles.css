@@ -103,7 +103,6 @@ body::before {
     color: white;
   }
 
-
 @media(min-width: 768px) {
   .file-upload {
       width: 50%;
