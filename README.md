@@ -8,7 +8,8 @@ To get this project up and running locally on your computer:
 1. Assuming you have Python setup, run the following commands (if you're on Windows you may use `py` or `py -3` instead of `python3` to start Python):
    ```
    pip3 install -r requirements.txt
-   python3 manage.py makemigrations
+   cd src
+   python3 manage.py makemigrations blog forum file_library
    python3 manage.py migrate
    python3 manage.py collectstatic
    python3 manage.py test # Run the standard tests. These should all pass.
