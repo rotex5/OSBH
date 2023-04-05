@@ -10,6 +10,7 @@ from blog.models import Blog, BlogAuthor, BlogComment, BlogView, BlogLike
 class BlogModelTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='testuser', password='password')
+        BlogAuthor.objects.filter(user=self.user).delete()
         self.author = BlogAuthor.objects.create(user=self.user, bio='test bio')
         self.blog = Blog.objects.create(title='test title', content='test content', author=self.author)
 
@@ -40,6 +41,7 @@ class BlogModelTestCase(TestCase):
 class BlogAuthorModelTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='testuser', password='password')
+        BlogAuthor.objects.filter(user=self.user).delete()
         self.author = BlogAuthor.objects.create(user=self.user, bio='test bio')
 
     def test_author_str(self):
@@ -52,6 +54,7 @@ class BlogAuthorModelTestCase(TestCase):
 class BlogCommentModelTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='testuser', password='password')
+        BlogAuthor.objects.filter(user=self.user).delete()
         self.author = BlogAuthor.objects.create(user=self.user, bio='test bio')
         self.blog = Blog.objects.create(title='test title', content='test content', author=self.author)
         self.comment = BlogComment.objects.create(blog=self.blog, content='test comment', commenter=self.user)
@@ -67,6 +70,7 @@ class BlogCommentModelTestCase(TestCase):
 class BlogViewModelTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='testuser', password='password')
+        BlogAuthor.objects.filter(user=self.user).delete()
         self.author = BlogAuthor.objects.create(user=self.user, bio='test bio')
         self.blog = Blog.objects.create(title='test title', content='test content', author=self.author)
 
@@ -78,6 +82,7 @@ class BlogViewModelTestCase(TestCase):
 class BlogLikeModelTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='testuser', password='password')
+        BlogAuthor.objects.filter(user=self.user).delete()
         self.author = BlogAuthor.objects.create(user=self.user, bio='test bio')
         self.blog = Blog.objects.create(title='test title', content='test content', author=self.author)
 
