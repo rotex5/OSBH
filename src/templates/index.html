@@ -74,7 +74,7 @@
     {% if messages %}
       {% for message in messages %}
       <div class="mt-4">
-        <div class="position-absolute end-50 bottom-0 alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <div id="message_container" class="position-absolute end-50 bottom-0 alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
           {{ message }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -122,6 +122,13 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+     // suppose the `id` attribute of element is `message_container`.
+      var message_ele = document.getElementById("message_container");
+
+      setTimeout(function(){ 
+        message_ele.style.display = "none"; 
+      }, 3000);
+      // Timeout is 3 sec, you can change it
     </script>
 
   </body>

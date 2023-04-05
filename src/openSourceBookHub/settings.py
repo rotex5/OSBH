@@ -35,7 +35,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*', 'http://127.0.0.1:8000']
-# CSRF_TRUSTED_ORIGINS = ['https://ea6f-197-210-28-38.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
 
 # Application definition
 
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.twitter',
 
     "crispy_forms",
     "crispy_bootstrap5",
@@ -78,6 +78,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'openSourceBookHub.urls'
+
+# Context processors
 
 TEMPLATES = [
     {
