@@ -1,5 +1,6 @@
 # Open-Source Book Hub(OSHB)
-![image](https://user-images.githubusercontent.com/26916048/230252283-46eb175a-b5cb-4a0f-8184-5de725358c03.png)
+![image](https://user-images.githubusercontent.com/26916048/230252396-f3cc345e-d983-4bc7-9be6-6a2366810456.png)
+
 
 ## Installation
 
