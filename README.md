@@ -8,7 +8,7 @@
 
 For a more in-depth description of OSBH as well as an overview of its tech stack and development process, do visit the links below:
 
-- [The Adventure of Building OSBH: Triumphs, Trials, and Thrills] Social Ideas Platform](https://medium.com/@David-Inkheart/the-adventure-of-building-osbh-triumphs-trials-and-thrills-dc8fceb173f)
+- [The Adventure of Building OSBH: Triumphs, Trials, and Thrills](https://medium.com/@David-Inkheart/the-adventure-of-building-osbh-triumphs-trials-and-thrills-dc8fceb173f)
 - [Building a Community](https://github.com/rotex5/Personal-blog/blob/master/OSHBblog/README.md)
 
 
