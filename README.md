@@ -1,6 +1,7 @@
-# OSHB
+# Open-Source Book Hub(OSHB)
+![image](https://user-images.githubusercontent.com/26916048/230252283-46eb175a-b5cb-4a0f-8184-5de725358c03.png)
 
-## How to get started
+## Installation
 
 To get this project up and running locally on your computer:
 1. Set up the [Python development environment](https://docs.python.org/3.4/library/venv.html#creating-virtual-environments).
