@@ -28,6 +28,7 @@ To get this project up and running locally on your computer:
    ```
    pip3 install -r requirements.txt   # To install all project dependecies
    cd src
+   python manage.py makemigrations
    python manage.py makemigrations blog forum file_library
    python manage.py migrate
    python manage.py collectstatic
