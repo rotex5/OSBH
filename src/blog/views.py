@@ -1,4 +1,3 @@
-# from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 # Create your views here.
 from .forms import BlogForm, CommentForm
@@ -54,7 +53,6 @@ def blog_detail(request, id):
     return render(request, 'blog/blog-detail.html', context)
 
 
-# @login_required
 def blog_update(request, id):
     """update a blog"""
     blog = get_object_or_404(Blog, id=id)

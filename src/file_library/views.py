@@ -1,5 +1,3 @@
-# from django.core.exceptions import ObjectDoesNotExist
-# from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
@@ -12,10 +10,12 @@ from blog.models import Blog
 
 
 def landing_page(request):
+    """Landing Page"""
     return render(request, 'file_library/landing.html')
 
 
 def file_list(request):
+    """Document Listing view"""
     files_list = File.objects.all().order_by('title')
     blogs = Blog.objects.all().order_by('-publish_date')[:3]
     page = request.GET.get('page', 1)
@@ -36,6 +36,7 @@ def file_list(request):
 
 
 def file_detail(request, id):
+    """Document Detail view"""
     file = get_object_or_404(File, id=id)
     uploader = None
     try:
@@ -49,8 +50,8 @@ def file_detail(request, id):
     return render(request, 'file_library/file-detail.html', context)
 
 
-# @login_required
 def file_upload(request):
+    """File upload"""
     user = FileUploader.objects.get(user=request.user)
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
@@ -71,6 +72,7 @@ def file_upload(request):
 
 
 def search_result(request):
+    """Search filter"""
     if request.method == "POST":
         searched = request.POST.get('searched')
         file_results = File.objects.filter(title__icontains=searched)
@@ -87,6 +89,7 @@ def search_result(request):
 
 
 def contact_us(request):
+    """Contact Form"""
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
